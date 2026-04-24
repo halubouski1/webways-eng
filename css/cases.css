@@ -4,3 +4,11 @@
     gap: 40px;
 }
 }
+
+.footer .appearance-tablet {
+    justify-content: space-between;
+}
+
+.footer .appearance-tablet .footer-right {
+    margin-left: 0;
+}

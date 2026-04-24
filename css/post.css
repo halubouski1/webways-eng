@@ -36,3 +36,11 @@
         font-size: 18px !important;
     } 
 }
+
+.footer .appearance-tablet {
+    justify-content: space-between;
+}
+
+.footer .appearance-tablet .footer-right {
+    margin-left: 0;
+}
