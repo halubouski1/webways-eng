@@ -30,6 +30,12 @@ picture {
     margin-left: 0;
 }
 
+@media (max-width: 900px) {
+    .nav-list {
+    gap: 40px;
+}
+}
+
 @media (max-width: 430px) {
     .hero-title {
         max-width: 330px;
