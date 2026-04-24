@@ -1,4 +1,39 @@
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+window.gtag = gtag;
+
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  wait_for_update: 500
+});
+
 window.addEventListener('load', function () {
+
+  var GA_ID = 'G-1078EBQPJ8';
+  var gaLoaded = false;
+
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  function syncConsent() {
+    if (CookieConsent.acceptedCategory('analytics')) {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      loadGA();
+    } else {
+      gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+  }
 
   CookieConsent.run({
 
@@ -28,9 +63,9 @@ window.addEventListener('load', function () {
     },
 
     language: {
-      default: 'ru',
+      default: 'en',
       translations: {
-        ru: {
+        en: {
           consentModal: {
             title: 'We use cookies',
             description: 'We use cookies to ensure the website works properly and to analyze traffic.',
@@ -40,23 +75,11 @@ window.addEventListener('load', function () {
           }
         }
       }
-    }
+    },
 
-  });
+    onConsent: syncConsent,
+    onChange: syncConsent
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-
-  if (CookieConsent.acceptedCategory('analytics')) {
-    gtag('js', new Date());
-    gtag('config', 'G-1078EBQPJ8');
-  }
-
-  window.addEventListener('cc:onConsent', function () {
-    if (CookieConsent.acceptedCategory('analytics')) {
-      gtag('js', new Date());
-      gtag('config', 'G-1078EBQPJ8');
-    }
   });
 
 });
