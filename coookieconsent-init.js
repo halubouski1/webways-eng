@@ -49,13 +49,13 @@ window.addEventListener('load', function () {
 
   if (CookieConsent.acceptedCategory('analytics')) {
     gtag('js', new Date());
-    gtag('config', 'G-EDBSSXJLQ7');
+    gtag('config', 'G-1078EBQPJ8');
   }
 
   window.addEventListener('cc:onConsent', function () {
     if (CookieConsent.acceptedCategory('analytics')) {
       gtag('js', new Date());
-      gtag('config', 'G-EDBSSXJLQ7');
+      gtag('config', 'G-1078EBQPJ8');
     }
   });
 
